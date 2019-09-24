@@ -44,7 +44,11 @@ module.exports = {
 			if (error.response.status === 404) {
 				error.message = `User "${username}" not found`;
 			}
-			throw error;
+			throw {
+				method: error.config.method.toUpperCase(),
+				statusCode: error.response.status,
+				message: error.message
+			};
 		}
 	},
 	image: async function(mediaID, options) {
@@ -67,11 +71,14 @@ module.exports = {
 					id: media.id,
 					shortcode: media.shortcode,
 					imageURL: media.display_resources.slice(-1)[0].src,
+					description: media.edge_media_to_caption.edges.length > 0 ? media.edge_media_to_caption.edges[0].node.text : '',
 					caption: media.accessibility_caption,
 					dimensions: {
 						width: media.dimensions.width,
 						height: media.dimensions.height
 					},
+					likes: media.edge_media_preview_like.count,
+					comments: media.edge_media_preview_comment.count,
 					isVideo: media.is_video,
 					author: {
 						id: media.owner.id,
@@ -86,7 +93,11 @@ module.exports = {
 			if (error.response.status === 404) {
 				error.message = `Media "${mediaID}" not found`;
 			}
-			throw error;
+			throw {
+				method: error.config.method.toUpperCase(),
+				statusCode: error.response.status,
+				message: error.message
+			};
 		}
 	},
 	video: async function(mediaID, options) {
@@ -109,10 +120,13 @@ module.exports = {
 					id: media.id,
 					shortcode: media.shortcode,
 					videoURL: media.video_url,
+					description: media.edge_media_to_caption.edges.length > 0 ? media.edge_media_to_caption.edges[0].node.text : '',
 					dimensions: {
 						width: media.dimensions.width,
 						height: media.dimensions.height
 					},
+					likes: media.edge_media_preview_like.count,
+					comments: media.edge_media_to_parent_comment.count,
 					isVideo: media.is_video,
 					author: {
 						id: media.owner.id,
@@ -127,7 +141,11 @@ module.exports = {
 			if (error.response.status === 404) {
 				error.message = `Media "${mediaID}" not found`;
 			}
-			throw error;
+			throw {
+				method: error.config.method.toUpperCase(),
+				statusCode: error.response.status,
+				message: error.message
+			};
 		}
 	}
 };

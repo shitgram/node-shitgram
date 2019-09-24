@@ -1,6 +1,5 @@
 <p align="center">
-	<h1>SHITGRAM</h1>
-	<br>
+	<h1>Shitgram</h1>
 	<p>Get instagram users or medias info.</p>
 </p>
 
@@ -10,13 +9,13 @@
 - [Usage](#usage)
 - [Documentation](#documentation)
 
-### Installation
+## Installation
 
 ```
 $ yarn add shitgram
 ```
 
-### Usage
+## Usage
 
 ```js
 const Shitgram = require('shitgram');
@@ -51,21 +50,21 @@ Shitgram.user('tenasatupitsyn')
 	});
 ```
 
-### Documentation
+## Documentation
 
-#### user(params, options)
+### user(params, options)
 
 - `params [string]` - A `username` or `profile link`
 - `options [object]`
 	- `defaultResponse` - Set `true` to return instagram default response, `false` is set to default.
 
-#### image(params, options)
+### image(params, options)
 
 - `params [string]` - A `post code` or `link` to it
 - `options [object]`
 	- `defaultResponse` - Set `true` to return instagram default response, `false` is set to default.
 
-#### video(params, options)
+### video(params, options)
 
 - `params [string]` - A `post code` or `link` to it
 - `options [object]`
