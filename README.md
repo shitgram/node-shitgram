@@ -1,12 +1,12 @@
-<p align="center">
+<div>
 	<h1>Shitgram</h1>
-	<p>Get instagram users or medias info.</p>
-</p>
+	<p>Get instagram users and medias info</p>
+</div>
 
 ## Contents
 
 - [Installation](#installation)
-- [Usage](#usage)
+- [Example](#example)
 - [Documentation](#documentation)
 
 ## Installation
@@ -15,7 +15,7 @@
 $ yarn add shitgram
 ```
 
-## Usage
+## Example
 
 ```js
 const Shitgram = require('shitgram');
@@ -35,7 +35,7 @@ Shitgram.user('tenasatupitsyn')
 				businessCategory: 'Creators & Celebrities',
 				username: 'tenasatupitsyn',
 				fullName: 'Tenasa M. Tupitsyn',
-				biography: '',
+				biography: 'YuGi TeNaSa 1010.\nLara/VE 🇻🇪',
 				email: null,
 				website: null,
 				followers: 0,
@@ -52,22 +52,28 @@ Shitgram.user('tenasatupitsyn')
 
 ## Documentation
 
-### user(params, options)
+### user(param, options) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
-- `params [string]` - A `username` or `profile link`
-- `options [object]`
-	- `defaultResponse` - Set `true` to return instagram default response, `false` is set to default.
+- **`param`** : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A `username` or `profile link`
+- **`options`** : [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) _(Optional)_
+	- `defaultResponse`<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Set `true` to return instagram default response, `false` is set to default.
 
-### image(params, options)
+### image(param, options) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
-- `params [string]` - A `post code` or `link` to it
-- `options [object]`
-	- `defaultResponse` - Set `true` to return instagram default response, `false` is set to default.
+- **`param`** : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A `post code` or `link` to it
+- **`options`** : [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) _(Optional)_
+	- `defaultResponse`<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Set `true` to return instagram default response, `false` is set to default.
 
-### video(params, options)
+### video(param, options) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
-- `params [string]` - A `post code` or `link` to it
-- `options [object]`
-	- `defaultResponse` - Set `true` to return instagram default response, `false` is set to default.
+- **`param`** : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A `post code` or `link` to it
+- **`options`** : [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) _(Optional)_
+	- `defaultResponse`<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Set `true` to return instagram default response, `false` is set to default.
 
 [BACK TO TOP](#contents)
