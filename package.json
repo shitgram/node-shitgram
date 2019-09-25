@@ -1,7 +1,7 @@
 {
   "name": "shitgram",
-  "version": "0.0.4",
-  "description": "Get instagram users or medias info",
+  "version": "0.1.0",
+  "description": "Get instagram users and medias info",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -18,10 +18,15 @@
     "axios": "^0.19.0"
   },
   "keywords": [
+    "shitgram",
     "instagram",
-    "avatar",
-    "image",
-    "video"
+    "insta",
+    "users",
+    "images",
+    "videos",
+    "albums",
+    "scrap",
+    "fetch"
   ],
   "bugs": {
     "url": "https://github.com/shitgram/node-shitgram/issues"

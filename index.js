@@ -42,7 +42,7 @@ module.exports = {
 			}
 		} catch (error) {
 			if (error.response.status === 404) {
-				error.message = `User "${username}" not found`;
+				error.message = `User ${username} not found`;
 			}
 			throw {
 				method: error.config.method.toUpperCase(),
@@ -92,7 +92,7 @@ module.exports = {
 			}
 		} catch (error) {
 			if (error.response.status === 404) {
-				error.message = `Media "${mediaID}" not found`;
+				error.message = `Media ${mediaID} not found`;
 			}
 			throw {
 				method: error.config.method.toUpperCase(),
@@ -141,11 +141,85 @@ module.exports = {
 			}
 		} catch (error) {
 			if (error.response.status === 404) {
-				error.message = `Media "${mediaID}" not found`;
+				error.message = `Media ${mediaID} not found`;
 			}
 			throw {
 				method: error.config.method.toUpperCase(),
 				statusCode: error.response.status,
+				message: error.message
+			};
+		}
+	},
+	album: async function(albumID, options) {
+		if (typeof albumID !== 'string') {
+			throw new TypeError(`Expected a string, got ${typeof albumID}`);
+		}
+
+		options = options || {};
+		options.defaultResponse = options.defaultResponse || false;
+
+		albumID = MediaValidator(albumID);
+
+		try {
+			const { data } = await axios.get(`https://www.instagram.com/p/${albumID}?__a=1`);
+			if (options.defaultResponse) {
+				return data;
+			} else {
+				const post = data.graphql.shortcode_media;
+				const album = post.edge_sidecar_to_children.edges;
+				let medias = [];
+
+				for (let i = 0; i < album.length; i++) {
+					const media = album[i].node;
+
+					!media.is_video
+					? medias.push({
+						id: media.id,
+						shortcode: media.shortcode,
+						mediaURL: media.display_resources.slice(-1)[0].src,
+						caption: media.accessibility_caption,
+						dimensions: {
+							width: media.dimensions.width,
+							height: media.dimensions.height
+						},
+						isVideo: media.is_video
+					})
+					: medias.push({
+						id: media.id,
+						shortcode: media.shortcode,
+						mediaURL: media.video_url,
+						caption: null,
+						dimensions: {
+							width: media.dimensions.width,
+							height: media.dimensions.height
+						},
+						isVideo: media.is_video
+					});
+				}
+
+				return {
+					id: post.id,
+					shortcode: post.shortcode,
+					likes: post.edge_media_preview_like.count,
+					comments: post.edge_media_to_parent_comment.count,
+					createdAt: post.taken_at_timestamp,
+					medias: [ ...medias ],
+					author: {
+						id: post.owner.id,
+						url: `https://www.instagram.com/${post.owner.username}`,
+						avatarURL: post.owner.profile_pic_url,
+						username: post.owner.username,
+						fullName: post.owner.full_name
+					}
+				};
+			}
+		} catch (error) {
+			if (error) {
+				error.message = `${albumID} does not contain multiple medias`;
+			}
+			throw {
+				method: 'GET',
+				statusCode: 400,
 				message: error.message
 			};
 		}
