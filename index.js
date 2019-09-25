@@ -80,6 +80,7 @@ module.exports = {
 					likes: media.edge_media_preview_like.count,
 					comments: media.edge_media_preview_comment.count,
 					isVideo: media.is_video,
+					createdAt: media.taken_at_timestamp,
 					author: {
 						id: media.owner.id,
 						url: `https://www.instagram.com/${media.owner.username}`,
@@ -128,6 +129,7 @@ module.exports = {
 					likes: media.edge_media_preview_like.count,
 					comments: media.edge_media_to_parent_comment.count,
 					isVideo: media.is_video,
+					createdAt: media.taken_at_timestamp,
 					author: {
 						id: media.owner.id,
 						url: `https://www.instagram.com/${media.owner.username}`,
