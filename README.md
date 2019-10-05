@@ -1,6 +1,11 @@
-<div>
-	<h1>Shitgram</h1>
-	<p>Get instagram users and medias info</p>
+<div align="center">
+	<img src="https://a.kyouko.se/eUhh.png" width="200" height="200"><br>
+	<b>Get instagram users and medias info</b>
+	<br><br>
+	<a href="https://npmjs.com/package/shitgram"><img src="https://img.shields.io/npm/v/shitgram?style=flat-square" alt="Version"></a>
+	<img src="https://img.shields.io/node/v/shitgram?style=flat-square" alt="Node">
+	<img src="https://img.shields.io/david/shitgram/node-shitgram?style=flat-square" alt="Dependencies">
+	<a href="https://github.com/shitgram/node-shitgram/blob/master/LICENSE"><img src="https://img.shields.io/github/license/shitgram/node-shitgram?style=flat-square" alt="License"></a>
 </div>
 
 ## Contents
@@ -54,7 +59,17 @@ shitgram.user('tenasatupitsyn')
 
 ## Documentation
 
-### new Shitgram()
+### new Shitgram(credentials) ⇒ [Constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor)
+
+- **`credentials`** : [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) _(Optional)_
+	- `username`<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Your instagram username
+	- `password`<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Your instagram password
+	- `sessionID`<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; An instagram session id. Will be used if you have not set `username` and `password`.
+
+You will not need to set a session id if you have already set username and password.
 
 ### user(param, options) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 Get user details
