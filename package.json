@@ -1,11 +1,11 @@
 {
-  "name": "shitgram",
-  "version": "1.2.1",
+  "name": "@shitgram/node-shitgram",
+  "version": "1.2.2",
   "description": "Get instagram users and medias info",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shitgram/node-shitgram.git"
+    "url": "git://github.com/shitgram/node-shitgram.git"
   },
   "author": {
     "name": "Tenasa Tupitsyn (EL TENASA)",
