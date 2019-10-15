@@ -1,5 +1,5 @@
 {
-  "name": "@shitgram/node-shitgram",
+  "name": "shitgram",
   "version": "1.2.2",
   "description": "Get instagram users and medias info",
   "main": "index.js",
