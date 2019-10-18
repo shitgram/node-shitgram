@@ -48,7 +48,7 @@ shitgram.user('tenasatupitsyn')
 				followers: 0,
 				following: 0,
 				posts: 0	}
-		*/
+		 */
 
 	})
 	.catch(function(error) {
@@ -70,6 +70,27 @@ shitgram.user('tenasatupitsyn')
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; An instagram session id. Will be used if you have not set `username` and `password`.
 
 You will not need to set a session id if you have already set username and password.
+
+### getSessionID ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+Generate a new session id
+
+If username and password are set, a new session id will always be generated. So that a unique session id will be returned set only sessionID in the credentials.
+
+There is a possibility to get the session id without the need for the constructor.
+```js
+const session = require('shitgram/session');
+
+session('username', 'password')
+	.then((data) => console.log(data));
+
+	/*
+		{	userID: '1234567890',
+			csrfToken: 'k44Ha0E2cDxc5lBNz3tfd3tk1LgTlhFa',
+  			sessionID: '7565175908%3ARVdJQzLsBldS9G%3A20'	}
+	 */
+```
+
+**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) —  Returned promise
 
 ### user(param, options) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 Get user details
