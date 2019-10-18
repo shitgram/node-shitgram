@@ -72,7 +72,7 @@ shitgram.user('tenasatupitsyn')
 You will not need to set a session id if you have already set username and password.
 
 ### getSessionID ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
-Generate a new session id
+Generate a new session id or return a defined sessionID
 
 If username and password are set, a new session id will always be generated. So that a unique session id will be returned set only sessionID in the credentials.
 
@@ -89,6 +89,15 @@ session('username', 'password')
   			sessionID: '7565175908%3ARVdJQzLsBldS9G%3A20'	}
 	 */
 ```
+
+**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) —  Returned promise
+
+### getUserDataWithSession(params) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+Get user data that is only available with a session id
+
+- **`params`**
+	- `userID` : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_
+	- `sessionID` : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_
 
 **Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) —  Returned promise
 
