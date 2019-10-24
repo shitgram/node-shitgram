@@ -30,7 +30,7 @@ const shitgram = new Shitgram();
 shitgram.user('tenasatupitsyn')
 	.then(function(user) {
 		// Handle success
-		console.log(user);
+		console.log(data);
 
 		/*
 			{	id: '7661979279',
@@ -85,8 +85,8 @@ session('username', 'password')
 
 	/*
 		{	userID: '1234567890',
-			csrfToken: 'k44Ha0E2cDxc5lBNz3tfd3tk1LgTlhFa',
-			sessionID: '7565175908%3ARVdJQzLsBldS9G%3A20'	}
+		 	csrfToken: 'k44Ha0E2cDxc5lBNz3tfd3tk1LgTlhFa',
+		 	sessionID: '7565175908%3ARVdJQzLsBldS9G%3A20'	}
 	 */
 ```
 
@@ -130,7 +130,7 @@ Get story details
 	- `defaultResponse`<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Set `true` to return default response from storiesig.com or if you have set credentials the response will be from instagram.com, `false` is set to default.
 	- `exclude`<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The file type to [exclude](https://github.com/shitgram/node-shitgram/blob/master/lib/ExcludeType.js) from the response, will not exclude if **defaultResponse** is `true`.
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The file type to [exclude](https://github.com/shitgram/node-shitgram/blob/master/enums/EExcludeType.js) from the response, will not exclude if **defaultResponse** is `true`.
 
 **Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) —  Returned promise
 
@@ -165,7 +165,7 @@ Get album post details
 	- `defaultResponse`<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Set `true` to return instagram default response, `false` is set to default.
 	- `exclude`<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The file type to [exclude](https://github.com/shitgram/node-shitgram/blob/master/lib/ExcludeType.js) from the response, will not exclude if **defaultResponse** is `true`.
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The file type to [exclude](https://github.com/shitgram/node-shitgram/blob/master/enums/EExcludeType.js) from the response, will not exclude if **defaultResponse** is `true`.
 
 **Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) —  Returned promise
 
