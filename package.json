@@ -1,7 +1,7 @@
 {
   "name": "shitgram",
   "version": "1.2.4",
-  "description": "Get instagram users and medias info",
+  "description": "A JavaScript library to make requests to Instagram",
   "main": "index.js",
   "repository": {
     "type": "git",

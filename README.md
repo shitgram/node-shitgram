@@ -1,6 +1,6 @@
 <div align="center">
 	<img src="https://a.kyouko.se/eUhh.png" width="200" height="200"><br>
-	<b>Get instagram users and medias info</b>
+	<b>A JavaScript library to make requests to Instagram</b>
 	<br><br>
 	<a href="https://npmjs.com/package/shitgram"><img src="https://img.shields.io/npm/v/shitgram?style=flat-square" alt="Version"></a>
 	<img src="https://img.shields.io/node/v/shitgram?style=flat-square" alt="Node">
