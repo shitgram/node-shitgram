@@ -110,6 +110,15 @@ Get user stories that is only available with a session id
 
 **Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) —  Returned promise
 
+### getUserHighlightsWithSession(params) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+Get user highlight that is only available with a session id
+
+- **`params`**
+	- `userID` : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_
+	- `sessionID` : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_
+
+**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) —  Returned promise
+
 ### user(param, options) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 Get user details
 
@@ -131,6 +140,17 @@ Get story details
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Set `true` to return default response from storiesig.com or if you have set credentials the response will be from instagram.com, `false` is set to default.
 	- `exclude`<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The file type to [exclude](https://github.com/shitgram/node-shitgram/blob/master/enums/EExcludeType.js) from the response, will not exclude if **defaultResponse** is `true`.
+
+**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) —  Returned promise
+
+### highlight(param, options) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+Get highlight details
+
+- **`param`** : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Highlight id` or `link` to it
+- **`options`** : [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) _(Optional)_
+	- `defaultResponse`<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Set `true` to return instagram default response, `false` is set to default.
 
 **Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) —  Returned promise
 
