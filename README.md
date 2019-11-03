@@ -152,7 +152,7 @@ Get highlight details
 	- `defaultResponse`<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Set `true` to return instagram default response, `false` is set to default.
 
-Highlights will be returned if it has been set to be shared by the author, check the availability of highlights in the `canReshare` property, if null the highlights will be undefined.
+Highlights will be returned if they have been set by the author to be shared, check availability of highlights in the `canReshare` property; if null, highlights will be an empty array.
 
 **Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) —  Returned promise
 
