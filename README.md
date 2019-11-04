@@ -74,7 +74,7 @@ You will not need to set a session id if you have already set username and passw
 ### getSessionID ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 Generate a new session id or return a defined sessionID
 
-If username and password are set, a new session id will always be generated. So that a unique session id will be returned set only sessionID in the credentials.
+If username and password are set, a new session id will always be generated. So that a unique session id will be returned set property sessionID in the credentials.
 
 There is a possibility to get the session id without the need for the constructor.
 ```js
