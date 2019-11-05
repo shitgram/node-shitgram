@@ -151,6 +151,8 @@ Get highlight details
 - **`options`** : [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) _(Optional)_
 	- `defaultResponse`<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Set `true` to return instagram default response, `false` is set to default.
+	- `exclude`<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The file type to [exclude](https://github.com/shitgram/node-shitgram/blob/master/enums/EExcludeType.js) from the response, will not exclude if **defaultResponse** is `true`.
 
 Highlights will be returned if they have been set by the author to be shared, check availability of highlights in the `canReshare` property; if null, highlights will be an empty array.
 
