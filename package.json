@@ -1,6 +1,6 @@
 {
   "name": "shitgram",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "description": "A JavaScript library to make requests to Instagram",
   "main": "index.js",
   "repository": {
