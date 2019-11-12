@@ -13,6 +13,7 @@
 - [Installation](#installation)
 - [Example](#example)
 - [Documentation](#documentation)
+- [Plugins](#plugins)
 
 ## Installation
 
@@ -76,19 +77,7 @@ Generate a new session id or return a defined sessionID
 
 If username and password are set, a new session id will always be generated. So that a unique session id will be returned set property sessionID in the credentials.
 
-There is a possibility to get the session id without the need for the constructor.
-```js
-const session = require('shitgram/session');
-
-session('username', 'password')
-	.then((data) => console.log(data));
-
-	/*
-		{	userID: '1234567890',
-		 	csrfToken: 'k44Ha0E2cDxc5lBNz3tfd3tk1LgTlhFa',
-		 	sessionID: '7565175908%3ARVdJQzLsBldS9G%3A20'	}
-	 */
-```
+It is possible to get the session ID without the builder by using [plug-in](#plugins).
 
 **Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) —  Returned promise
 
@@ -197,5 +186,18 @@ Get album post details
 File type to exclude from response
 
 Available properties: `IMAGE` - `VIDEO`
+
+## Plugins
+
+### Session(params) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+Generate a new csrfToken and sessionID from Instagram username and password
+
+- **`params`** : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_<br>
+	- `username`
+	- `password`
+
+A brief example of use [here](https://github.com/shitgram/node-shitgram/blob/master/examples/generate_session.example.js)
+
+**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) —  Returned promise
 
 [BACK TO TOP](#contents)
