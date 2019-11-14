@@ -1,4 +1,7 @@
-// Declaring Session from "shitgram/plugins" Path
+// Declaring Session from "shitgram" library
+const { Session } = require('../').Plugins;
+
+// Declaring Session from "shitgram/plugins" library plugins path
 const { Session } = require('../plugins');
 
 Session(process.env.USERNAME, process.env.PASSWORD)

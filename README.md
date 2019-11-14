@@ -1,4 +1,4 @@
-<div align="center">
+<p align="center">
 	<img src="https://a.kyouko.se/eUhh.png" width="200" height="200"><br>
 	<b>A JavaScript library to make requests to Instagram</b>
 	<br><br>
@@ -6,7 +6,7 @@
 	<img src="https://img.shields.io/node/v/shitgram?style=flat-square" alt="Node">
 	<img src="https://img.shields.io/david/shitgram/node-shitgram?style=flat-square" alt="Dependencies">
 	<a href="https://github.com/shitgram/node-shitgram/blob/master/LICENSE"><img src="https://img.shields.io/github/license/shitgram/node-shitgram?style=flat-square" alt="License"></a>
-</div>
+</p>
 
 ## Contents
 
@@ -64,9 +64,9 @@ shitgram.user('tenasatupitsyn')
 
 - **`credentials`** : [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) _(Optional)_
 	- `username`<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Your instagram username
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Instagram account username
 	- `password`<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Your instagram password
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Instagram account password
 	- `sessionID`<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; An instagram session id. Will be used if you have not set `username` and `password`.
 
@@ -192,12 +192,14 @@ Available properties: `IMAGE` - `VIDEO`
 ### Session(params) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 Generate a new csrfToken and sessionID from Instagram username and password
 
-- **`params`** : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_<br>
-	- `username`
-	- `password`
+- **`params`**
+	- `username` : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Instagram account username
+	- `password` : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Instagram account password
 
 A brief example of use [here](https://github.com/shitgram/node-shitgram/blob/master/examples/generate_session.example.js)
 
 **Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) —  Returned promise
 
-[BACK TO TOP](#contents)
+[BACK TO TOP](#readme)
