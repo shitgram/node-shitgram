@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const axios = require('axios');
 
@@ -8,20 +8,24 @@ module.exports = class Session {
 	 * @returns {Promise} - Returned promise
 	 */
 	static async csrfToken() {
-		let csrfToken;
+		try {
+			let csrfToken;
 
-		const { headers } = await axios({
-			method: 'GET',
-			url: 'https://www.instagram.com/accounts/login/'
-		});
+			const { headers } = await axios({
+				method: 'GET',
+				url: 'https://www.instagram.com/accounts/login/'
+			});
 
-		for (const k in headers['set-cookie']) {
-			if (headers['set-cookie'][k].match('^csrftoken=')) {
-				csrfToken = headers['set-cookie'][k].split(';')[0].split('=')[1];
+			for (const item in headers['set-cookie']) {
+				if (headers['set-cookie'][item].match('^csrftoken=')) {
+					csrfToken = headers['set-cookie'][item].split(';')[0].split('=')[1];
+				}
 			}
-		}
 
-		return csrfToken;
+			return csrfToken;
+		} catch (error) {
+			throw error;
+		}
 	}
 
 	/**
@@ -31,10 +35,14 @@ module.exports = class Session {
 	 * @returns {Promise} - Returned promise
 	 */
 	static async sessionID(username, password) {
-		const csrfToken = await this.csrfToken();
-		let sessionID;
+		if (typeof username !== 'string' || typeof password !== 'string') {
+			throw new TypeError(`Expected a string, got ${typeof username !== 'string' ? typeof username : typeof password}`);
+		}
 
 		try {
+			const csrfToken = await this.csrfToken();
+			let sessionID;
+
 			const { headers, body } = await this.request({
 				method: 'POST',
 				url: 'https://www.instagram.com/accounts/login/ajax/',
@@ -50,9 +58,9 @@ module.exports = class Session {
 			const { userId: userID, authenticated } = JSON.parse(body);
 
 			if (authenticated) {
-				for (const k in headers['set-cookie']) {
-					if (headers['set-cookie'][k].match('^sessionid=')) {
-						sessionID = headers['set-cookie'][k].split(';')[0].split('=')[1];
+				for (const item in headers['set-cookie']) {
+					if (headers['set-cookie'][item].match('^sessionid=')) {
+						sessionID = headers['set-cookie'][item].split(';')[0].split('=')[1];
 					}
 				}
 
@@ -60,9 +68,9 @@ module.exports = class Session {
 					userID,
 					csrfToken,
 					sessionID
-				}
+				};
 			} else {
-				return 'Username or password is incorrect. Please check and try again';
+				throw new Error('Username or password is incorrect. Please check and try again');
 			}
 		} catch (error) {
 			throw error;
