@@ -202,4 +202,6 @@ A brief example of use [here](https://github.com/shitgram/node-shitgram/blob/mas
 
 **Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) —  Returned promise
 
-[BACK TO TOP](#readme)
+<p align="center">
+	<a href="#readme">BACK TO TOP</a>
+</p>
