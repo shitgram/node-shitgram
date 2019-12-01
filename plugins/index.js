@@ -1,5 +1,5 @@
 module.exports = {
-	Session: function(username, password) {
+	Session(username, password) {
 		return require('./Session.js').sessionID(username, password);
 	}
 };
