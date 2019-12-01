@@ -5,7 +5,7 @@ const axios = require('axios');
 module.exports = class Session {
 	/**
 	 * Requesting csrftoken
-	 * @returns {Promise} - Returned promise
+	 * @returns {Promise<String>} - New csrf token
 	 */
 	static async csrfToken() {
 		try {
@@ -32,7 +32,7 @@ module.exports = class Session {
 	 * Generating new session ID
 	 * @param {String} username - Instagram account username
 	 * @param {String} password - Instagram account password
-	 * @returns {Promise} - Returned promise
+	 * @returns {Promise<Object>} - New session info
 	 */
 	static async sessionID(username, password) {
 		if (typeof username !== 'string' || typeof password !== 'string') {

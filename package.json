@@ -1,11 +1,11 @@
 {
-  "name": "shitgram",
-  "version": "1.4.2",
+  "name": "@shitgram/node-shitgram",
+  "version": "1.4.3",
   "description": "A JavaScript library to make requests to Instagram",
   "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/shitgram/node-shitgram.git"
+  "repository": "git://github.com/shitgram/node-shitgram.git",
+  "publishConfig": {
+    "registry" "https://npm.pkg.github.com"
   },
   "author": {
     "name": "Tenasa Tupitsyn (EL TENASA)",
@@ -32,9 +32,7 @@
     "scrap",
     "fetch"
   ],
-  "bugs": {
-    "url": "https://github.com/shitgram/node-shitgram/issues"
-  },
+  "bugs": "https://github.com/shitgram/node-shitgram/issues",
   "homepage": "https://github.com/shitgram/node-shitgram#readme",
   "license": "MIT"
 }

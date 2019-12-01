@@ -29,7 +29,7 @@ const Shitgram = require('shitgram');
 const shitgram = new Shitgram();
 
 shitgram.user('tenasatupitsyn')
-	.then(function(user) {
+	.then((data) => {
 		// Handle success
 		console.log(data);
 
@@ -52,7 +52,7 @@ shitgram.user('tenasatupitsyn')
 		 */
 
 	})
-	.catch(function(error) {
+	.catch((error) => {
 		// Handle error
 		console.log(error);
 	});
@@ -63,11 +63,11 @@ shitgram.user('tenasatupitsyn')
 ### new Shitgram(credentials) ⇒ [Constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor)
 
 - **`credentials`** : [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) _(Optional)_
-	- `username`<br>
+	- `username` : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Instagram account username
-	- `password`<br>
+	- `password` : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Instagram account password
-	- `sessionID`<br>
+	- `sessionID` : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; An instagram session id. Will be used if you have not set `username` and `password`.
 
 You will not need to set a session id if you have already set username and password.
@@ -79,108 +79,105 @@ If username and password are set, a new session id will always be generated. So 
 
 It is possible to get the session ID without the builder by using [plug-in](#plugins).
 
-**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) —  Returned promise
+**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)> —  Session id generated or returning from credentials
 
-### getUserDataWithSession(params) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+### getUserDataWithSession(userID, sessionID) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 Get user data that is only available with a session id
 
-- **`params`**
-	- `userID` : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_
-	- `sessionID` : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_
+- `userID` : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_
+- `sessionID` : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_
 
-**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) —  Returned promise
+**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)> —  User data obtained only in session
 
-### getUserStoriesWithSession(params) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+### getUserStoriesWithSession(userID, sessionID) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 Get user stories that is only available with a session id
 
-- **`params`**
-	- `userID` : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_
-	- `sessionID` : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_
+- `userID` : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_
+- `sessionID` : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_
 
-**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) —  Returned promise
+**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)> —  User story data obtained in one session only
 
-### getUserHighlightsWithSession(params) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+### getUserHighlightsWithSession(userID, sessionID) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 Get user highlight that is only available with a session id
 
-- **`params`**
-	- `userID` : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_
-	- `sessionID` : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_
+- `userID` : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_
+- `sessionID` : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_
 
-**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) —  Returned promise
+**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)> —  User Highlight data obtained in one session only
 
-### user(param, options) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+### user(param[, options]) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 Get user details
 
 - **`param`** : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Username` or `link` for the user profile you want details about
 - **`options`** : [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) _(Optional)_
-	- `defaultResponse`<br>
+	- `defaultResponse` : [Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Set `true` to return instagram default response, `false` is set to default.
 
-**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) —  Returned promise
+**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)> —  User data
 
-### story(param, options) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+### story(param[, options]) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 Get story details
 
 - **`param`** : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Username` or `link` for the user stories you want details about
 - **`options`** : [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) _(Optional)_
-	- `defaultResponse`<br>
+	- `defaultResponse` : [Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Set `true` to return default response from storiesig.com or if you have set credentials the response will be from instagram.com, `false` is set to default.
-	- `exclude`<br>
+	- `exclude` : [ExcludeType](#excludetype--enumstring)<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The file type to [exclude](https://github.com/shitgram/node-shitgram/blob/master/enums/EExcludeType.js) from the response, will not exclude if **defaultResponse** is `true`.
 
-**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) —  Returned promise
+**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)> —  User story data
 
-### highlight(param, options) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+### highlight(param[, options]) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 Get highlight details
 
 - **`param`** : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Highlight id` or `link` to it
 - **`options`** : [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) _(Optional)_
-	- `defaultResponse`<br>
+	- `defaultResponse` : [Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Set `true` to return instagram default response, `false` is set to default.
-	- `exclude`<br>
+	- `exclude` : [ExcludeType](#excludetype--enumstring)<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The file type to [exclude](https://github.com/shitgram/node-shitgram/blob/master/enums/EExcludeType.js) from the response, will not exclude if **defaultResponse** is `true`.
 
 Highlights will be returned if they have been set by the author to be shared, check availability of highlights in the `canReshare` property; if null, highlights will be an empty array.
 
-**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) —  Returned promise
+**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)> —  User highlight data
 
-### image(param, options) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+### image(param[, options]) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 Get image post details
 
 - **`param`** : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Post code` or `link` to it
 - **`options`** : [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) _(Optional)_
-	- `defaultResponse`<br>
+	- `defaultResponse` : [Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Set `true` to return instagram default response, `false` is set to default.
 
-**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) —  Returned promise
+**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)> —  Image data
 
-### video(param, options) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+### video(param[, options]) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 Get video post details
 
 - **`param`** : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `Post code` or `link` to it
 - **`options`** : [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) _(Optional)_
-	- `defaultResponse`<br>
+	- `defaultResponse` : [Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Set `true` to return instagram default response, `false` is set to default.
 
-**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) —  Returned promise
+**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)> —  Video data
 
-### album(param, options) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+### album(param[, options]) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 Get album post details
 
 - **`param`** : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Album `post code` or `link` to it
 - **`options`** : [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) _(Optional)_
-	- `defaultResponse`<br>
+	- `defaultResponse` : [Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Set `true` to return instagram default response, `false` is set to default.
-	- `exclude`<br>
+	- `exclude` : [ExcludeType](#excludetype--enumstring)<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The file type to [exclude](https://github.com/shitgram/node-shitgram/blob/master/enums/EExcludeType.js) from the response, will not exclude if **defaultResponse** is `true`.
 
-**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) —  Returned promise
+**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)> —  Album data
 
 ### ExcludeType : _enum<[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>_
 File type to exclude from response
@@ -189,18 +186,17 @@ Available properties: `IMAGE` - `VIDEO`
 
 ## Plugins
 
-### Session(params) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+### Session(username, password) ⇒ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 Generate a new csrfToken and sessionID from Instagram username and password
 
-- **`params`**
-	- `username` : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Instagram account username
-	- `password` : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Instagram account password
+- `username` : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Instagram account username
+- `password` : [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) _(Required)_<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Instagram account password
 
 A brief example of use [here](https://github.com/shitgram/node-shitgram/blob/master/examples/generate_session.example.js)
 
-**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) —  Returned promise
+**Returns**: &nbsp;&nbsp; [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)> —  New session info
 
 <p align="center">
 	<a href="#readme">BACK TO TOP</a>
