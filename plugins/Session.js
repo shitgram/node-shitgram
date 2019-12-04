@@ -1,7 +1,5 @@
 'use strict';
 
-const axios = require('axios');
-
 module.exports = class Session {
 	/**
 	 * Requesting csrftoken
@@ -9,20 +7,9 @@ module.exports = class Session {
 	 */
 	static async csrfToken() {
 		try {
-			let csrfToken;
+			const { headers } = await this._get('https://www.instagram.com/accounts/login/');
 
-			const { headers } = await axios({
-				method: 'GET',
-				url: 'https://www.instagram.com/accounts/login/'
-			});
-
-			for (const item in headers['set-cookie']) {
-				if (headers['set-cookie'][item].match('^csrftoken=')) {
-					csrfToken = headers['set-cookie'][item].split(';')[0].split('=')[1];
-				}
-			}
-
-			return csrfToken;
+			return String(headers.get('set-cookie').match(/csrftoken=([A-Za-z0-9]+)/g)).slice(10);
 		} catch (error) {
 			throw error;
 		}
@@ -41,9 +28,7 @@ module.exports = class Session {
 
 		try {
 			const csrfToken = await this.csrfToken();
-			let sessionID;
-
-			const { headers, body } = await this.request({
+			const { headers, body } = await this._post({
 				method: 'POST',
 				url: 'https://www.instagram.com/accounts/login/ajax/',
 				form: {
@@ -58,11 +43,7 @@ module.exports = class Session {
 			const { userId: userID, authenticated } = JSON.parse(body);
 
 			if (authenticated) {
-				for (const item in headers['set-cookie']) {
-					if (headers['set-cookie'][item].match('^sessionid=')) {
-						sessionID = headers['set-cookie'][item].split(';')[0].split('=')[1];
-					}
-				}
+				const sessionID = String(headers['set-cookie'].join(' ').match(/sessionid=([A-Za-z0-9]+.*)/g)).split(';')[0].slice(10);
 
 				return {
 					userID,
@@ -77,7 +58,11 @@ module.exports = class Session {
 		}
 	}
 
-	static request(data) {
+	static _get(options) {
+		return require('node-fetch')(options).then((response) => response).catch((error) => error);
+	}
+
+	static _post(data) {
 		return new Promise(function(resolve, reject) {
 			require('request')(data, function(error, response, body) {
 				if (!error) {
