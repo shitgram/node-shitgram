@@ -1,13 +1,13 @@
 // Declaring Session from "shitgram" library
-const { Session } = require('../').Plugins;
+// const { Session } = require('../').Plugins
 
 // Declaring Session from "shitgram/plugins" library plugins path
-const { Session } = require('../plugins');
+const { Session } = require('../plugins')
 
 Session(process.env.USERNAME, process.env.PASSWORD)
-	.then(function(data) {
+	.then((data) => {
 		// Handle success
-		console.log(data);
+		console.log(data)
 
 		/*
 			{	userID: '1234567890',
@@ -16,7 +16,7 @@ Session(process.env.USERNAME, process.env.PASSWORD)
 		 */
 
 	})
-	.catch(function(error) {
+	.catch((error) => {
 		// Handle error
-		console.log(error);
-	});
+		console.log(error)
+	})

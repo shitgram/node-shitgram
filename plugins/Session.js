@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 module.exports = class Session {
 	/**
@@ -7,11 +7,11 @@ module.exports = class Session {
 	 */
 	static async csrfToken() {
 		try {
-			const { headers } = await this._get('https://www.instagram.com/accounts/login/');
+			const { headers } = await this._get('https://www.instagram.com/accounts/login/')
 
-			return String(headers.get('set-cookie').match(/csrftoken=([A-Za-z0-9]+)/g)).slice(10);
+			return String(headers.get('set-cookie').match(/csrftoken=([A-Za-z0-9]+)/g)).slice(10)
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
@@ -23,11 +23,11 @@ module.exports = class Session {
 	 */
 	static async sessionID(username, password) {
 		if (typeof username !== 'string' || typeof password !== 'string') {
-			throw new TypeError(`Expected a string, got ${typeof username !== 'string' ? typeof username : typeof password}`);
+			throw new TypeError(`Expected a string, got ${typeof username !== 'string' ? typeof username : typeof password}`)
 		}
 
 		try {
-			const csrfToken = await this.csrfToken();
+			const csrfToken = await this.csrfToken()
 			const { headers, body } = await this._post({
 				method: 'POST',
 				url: 'https://www.instagram.com/accounts/login/ajax/',
@@ -38,39 +38,39 @@ module.exports = class Session {
 				headers: {
 					'X-CSRFToken': csrfToken
 				}
-			});
+			})
 
-			const { userId: userID, authenticated } = JSON.parse(body);
+			const { userId: userID, authenticated } = JSON.parse(body)
 
 			if (authenticated) {
-				const sessionID = String(headers['set-cookie'].join(' ').match(/sessionid=([A-Za-z0-9]+.*)/g)).split(';')[0].slice(10);
+				const sessionID = String(headers['set-cookie'].join(' ').match(/sessionid=([A-Za-z0-9]+.*)/g)).split(';')[0].slice(10)
 
 				return {
 					userID,
 					csrfToken,
 					sessionID
-				};
+				}
 			} else {
-				throw new Error('Username or password is incorrect. Please check and try again');
+				throw new Error('Username or password is incorrect. Please check and try again')
 			}
 		} catch (error) {
-			throw error;
+			throw error
 		}
 	}
 
 	static _get(options) {
-		return require('node-fetch')(options).then((response) => response).catch((error) => error);
+		return require('node-fetch')(options).then((response) => response).catch((error) => error)
 	}
 
-	static _post(data) {
-		return new Promise(function(resolve, reject) {
-			require('request')(data, function(error, response, body) {
+	static _post(options) {
+		return new Promise((resolve, reject) => {
+			require('request')(options, (error, response, body) => {
 				if (!error) {
-					resolve(response);
+					resolve(response)
 				} else {
-					reject(error);
+					reject(error)
 				}
-			});
-		});
+			})
+		})
 	}
-};
+}
