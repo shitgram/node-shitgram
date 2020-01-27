@@ -1,12 +1,9 @@
 {
-  "name": "@shitgram/node-shitgram",
+  "name": "node-shitgram",
   "version": "1.5.0",
   "description": "A JavaScript library to make requests to Instagram",
   "main": "index.js",
   "repository": "git://github.com/shitgram/node-shitgram.git",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "author": {
     "name": "Tenasa Tupitsyn",
     "url": "http://tenasa.gq"
