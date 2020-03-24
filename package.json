@@ -1,5 +1,5 @@
 {
-  "name": "node-shitgram",
+  "name": "shitgram",
   "version": "1.5.0",
   "description": "A JavaScript library to make requests to Instagram",
   "main": "index.js",
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "node-fetch": "^2.6.0",
-    "request": "^2.88.0"
+    "request": "^2.88.2"
   },
   "keywords": [
     "shitgram",
